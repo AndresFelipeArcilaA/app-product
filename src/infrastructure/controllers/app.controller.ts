@@ -1,12 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from '../../application/service/app.service';
+import { ProductEntity } from 'src/domain/entities/product.entity';
 
-@Controller()
+@Controller("/producto")
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get("/filtrar")
+  findAll(): Promise<ProductEntity[]> {
+    return this.appService.findAll();
   }
 }
